@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>testing</short-name>
+	<uri>url_builder</uri>
+	<description>Tag library to always build correct Route</description>
+
+	<tag>
+		<name>group_list</name>
+		<tag-class>annuaire.tag.GroupListRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build groups' list's URL</description>
+	</tag>
+	
+	<tag>
+		<name>person_list</name>
+		<tag-class>annuaire.tag.PersonListRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build groups' list's URL</description>
+	</tag>
+	
+	<tag>
+		<name>person_page</name>
+		<tag-class>annuaire.tag.PersonPageRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build person's page's URL ( Id Param still for correct URL in this case )</description>
+	</tag>
+	
+	<tag>
+		<name>person_edit</name>
+		<tag-class>annuaire.tag.PersonEditRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build person's edit's URL ( Id Param still for correct URL in this case )</description>
+	</tag>
+	
+	<tag>
+		<name>group_page</name>
+		<tag-class>annuaire.tag.GroupPageRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build group's find's URL ( pattern param still required )</description>
+	</tag>
+	
+	<tag>
+		<name>logout</name>
+		<tag-class>annuaire.tag.LogoutRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build logout URL</description>
+	</tag>
+	
+	<tag>
+		<name>login</name>
+		<tag-class>annuaire.tag.LoginRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build login URL</description>
+	</tag>
+</taglib>

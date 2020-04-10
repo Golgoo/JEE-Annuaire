@@ -1,0 +1,33 @@
+body { 
+	font-family: sans-serif;
+	font-size: 18px;
+}
+
+
+nav{
+	font-size: 20px;
+}
+
+.navbar-brand{
+	font-size: 25px;
+}
+
+.annuaire-nav-droite{
+	margin-right: 20em;
+	background-color: #6495ED;
+	font-weight: bold;
+}
+
+.annuaire-nav-droite a{
+	color: white;
+}
+
+.main{
+	width: 75%;
+	margin: auto;
+	margin-top: 100px;
+}
+
+.annuaire-search{
+	margin-right: 17em;
+}
