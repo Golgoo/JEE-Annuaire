@@ -15,9 +15,9 @@
 <%@ include file="/WEB-INF/jsp/includes/body-menu.jsp" %>
 <div class="main">
 	<form action="/login" method="post">
-		<label for="email"><spring:message code="others.Email"/> : </label><br>
+		<label for="email"><spring:message code="person.Email"/> : </label><br>
 	  	<input type="text" id="email" name="email"><br>
-	  	<label for="password"><spring:message code="others.MotDePass"/> : </label><br>
+	  	<label for="password"><spring:message code="person.MotDePass"/> : </label><br>
 	  	<input type="text" id="password" name="password">
 	  	<input type="submit" value="Login">
 	  	<c:if test="${invalid_auth == true }">

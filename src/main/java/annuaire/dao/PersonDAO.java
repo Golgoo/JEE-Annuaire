@@ -51,6 +51,30 @@ public class PersonDAO implements IPersonDAO{
 	    return em.createQuery( criteria ).getResultList();
 	}
 	
+
+	@Override
+	public Collection<Person> findAllPersonsFromGroup(long groupId, String pattern) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+ 	    
+	    CriteriaQuery<Person> criteria = cb.createQuery( Person.class );
+	    Root<Person> personRoot = criteria.from( Person.class );
+	    criteria.select( personRoot );
+	    
+	    ParameterExpression<String> p = cb.parameter(String.class);
+	    
+	    criteria.where(cb.and(
+	    					cb.equal(personRoot.get( "group" ), groupId ), 
+	    					cb.or(cb.like(personRoot.get("firstName"), p), 
+	    						  cb.like(personRoot.get("lastName"), p)
+	    						  )
+	    					)
+	    				);	    
+	    TypedQuery<Person> query = em.createQuery(criteria);
+	    query.setParameter(p, "%"+ pattern +"%");
+	    
+		return query.getResultList();
+	}
+	
 	@Override
 	public Collection<Person> findAllPersons(){
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -61,6 +85,34 @@ public class PersonDAO implements IPersonDAO{
 	 
 	    TypedQuery<Person> allQuery = em.createQuery(all);
 	    return allQuery.getResultList();
+	}
+		
+	//TODO : USE DTO
+	@Override
+	public Collection<Person> findAllPersonWithHideData(){
+		/*
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		
+		CriteriaQuery<Person> criteria = builder.createQuery( Person.class );
+		Root<Person> root = criteria.from( Person.class );
+		
+		Path<Long> idPath = root.get( "id" );
+		Path<String> firstName = root.get( "firstName");
+		Path<String> lastName = root.get( "lastName");
+		Path<Group> group = root.get( "group");
+		Path<String> website = root.get("website");
+		Path<String> password = root.get("password");
+		
+		
+		criteria.multiselect(idPath, firstName, builder.nullLiteral(String.class), group, lastName, website, builder.nullLiteral(String.class), password ) ;
+		
+		List<Person> queryResult = em.createQuery( criteria ).getResultList();
+		
+		
+		
+		return queryResult;*/
+		
+		return null;
 	}
 	
 	@Override
@@ -152,10 +204,11 @@ public class PersonDAO implements IPersonDAO{
 
 	@Override
 	public Group findGroup(long id) {
-		if(em == null) {
-			System.err.println("Enity manager is null ..");
+		Group g = em.find(Group.class, id);
+		if(g != null) {
+			em.detach(g);
 		}
-		return em.find(Group.class, id);
+		return g;
 	}
 
 	@Override
@@ -167,6 +220,7 @@ public class PersonDAO implements IPersonDAO{
 	public void updatePerson(Person p) {
 		em.merge(p);
 	}
+
 
 
 

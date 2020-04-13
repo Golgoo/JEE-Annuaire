@@ -89,7 +89,7 @@ public class SpringWebConfiguration implements WebApplicationInitializer, WebMvc
     @Bean("messageSource")
     public ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource r = new ResourceBundleMessageSource();
-        r.setBasenames("classpath:/messages", "classpath:/others", "classpath:/personserror");
+        r.setBasenames("classpath:/others", "classpath:/person", "classpath:/group");
         return r;
     }
     

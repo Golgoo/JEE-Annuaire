@@ -8,7 +8,7 @@
 <head>
 	<%@include file="/WEB-INF/jsp/includes/head-bootstrap.jsp" %>
 	<link href="<c:url value="/annuaire.css" />" rel="stylesheet">
-	<title><spring:message code="others.Personne" /></title>
+	<title><spring:message code="person.Personne" /></title>
 </head>
 
 <body>
@@ -18,8 +18,8 @@
 		<c:out value="${person.firstName}"/>
 	</h2>
 		
-	<h3> <spring:message code="others.Email" /> : ${person.email } </h3>
-	<p> <spring:message code="others.Groupe" /> : ${person.group.nom }</p>
+	<h3> <spring:message code="person.Email" /> : ${person.email } </h3>
+	<p> <spring:message code="group.Groupe" /> : ${person.group.nom }</p>
 	
 	<c:if test="${editable == true }">
 		<c:set var="edit_base_url"> <url-builder:person_edit/> </c:set>

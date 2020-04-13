@@ -1,9 +1,9 @@
 package annuaire.business;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,16 +31,36 @@ public class DirectoryManager implements IDirectoryManager{
 	}
 	
 	private void hideSensibleData(Person p) {
-		p.setEmail(null);
-		p.setBirthDay(null);
+		if(p!=null) {
+			p.setEmail(null);
+			p.setBirthDay(null);
+		}
+	}
+	
+	private void hideSensibleData(Set<Person> persons ) {
+		if(persons != null) {
+			for(Person p :persons) {
+				hideSensibleData(p);
+			}
+		}
+	}
+		
+	private void hideSensibleData(Group g) {
+		if(g!=null) {
+			hideSensibleData(g.getMembers());
+		}
+	}
+	
+	private void hideSensibleData(Collection<Group> groups) {
+		if(groups != null) {
+			for(Group g : groups)
+				hideSensibleData(g);
+		}
 	}
 
 	@Override
 	public Person findPerson(long personId) {
 		Person p = dao.findPerson(personId);
-		if(p == null) {
-			return null;
-		}
 		if(userIsAnonymous()) {
 			hideSensibleData(p);
 		}
@@ -50,21 +70,19 @@ public class DirectoryManager implements IDirectoryManager{
 	@Override
 	public Group findGroup(long groupId) {
 		Group g = dao.findGroup(groupId);
-		if(g == null) return null;
 		if(userIsAnonymous()) {
-			for(Person p : g.getMembers()) {
-				hideSensibleData(p);
-			}
+			hideSensibleData(g);
 		}
 		return g;
 	}
 
 	@Override
 	public Collection<Person> findAllPersonsFromGroup(long groupId) {
+		Set<Person> persons = new LinkedHashSet<Person>(dao.findAllPersonsFromGroup(groupId));
 		if(userIsAnonymous()) {
-			return null ;
+			hideSensibleData(persons);
 		}
-		return dao.findAllPersonsFromGroup(groupId);
+		return persons;
 	}
 
 	@Override
@@ -85,13 +103,10 @@ public class DirectoryManager implements IDirectoryManager{
 		user.setPersonId(null);
 	}
 	
-	protected final Log logger = LogFactory.getLog(getClass());
-
 	@Override
 	public void savePerson(Person p) {
 		if(p != null && user.getPersonId() != null) {
 			if(p.getId() == user.getPersonId()) {
-				logger.info("UPDATING !!!");
 				dao.updatePerson(p);
 			}
 		}
@@ -101,24 +116,16 @@ public class DirectoryManager implements IDirectoryManager{
 	public Collection<Group> findAllGroup() {
 		Collection<Group> groups = dao.findAllGroups();
 		if(userIsAnonymous()) {
-			for(Group g : groups) {
-				if(g.getMembers() != null) {
-					for(Person p : g.getMembers()) {
-						hideSensibleData(p);
-					}
-				}
-			}
+			hideSensibleData(groups);
 		}
 		return groups;
 	}
 
 	@Override
 	public Collection<Person> findAllPersons() {
-		Collection<Person> persons = dao.findAllPersons();
+		Set<Person> persons = new LinkedHashSet<Person>(dao.findAllPersons());
 		if(userIsAnonymous()) {
-			for(Person p : persons) {
-				hideSensibleData(p);
-			}
+			hideSensibleData(persons);
 		}
 		return persons;
 	}
@@ -127,24 +134,25 @@ public class DirectoryManager implements IDirectoryManager{
 	public Collection<Group> findAllGroup(String pattern) {
 		Collection<Group> groups = dao.findAllGroups(pattern);
 		if(userIsAnonymous()) {
-			for(Group g : groups) {
-				if(g.getMembers() != null) {
-					for(Person p : g.getMembers()) {
-						hideSensibleData(p);
-					}
-				}
-			}
+			hideSensibleData(groups);
 		}
 		return groups;
 	}
 
 	@Override
 	public Collection<Person> findAllPersons(String pattern) {
-		Collection<Person> persons = dao.findAllPersons(pattern);
+		Set<Person> persons = new LinkedHashSet<Person>(dao.findAllPersons(pattern));
 		if(userIsAnonymous()) {
-			for(Person p : persons) {
-				hideSensibleData(p);
-			}
+			hideSensibleData(persons);
+		}
+		return persons;
+	}
+
+	@Override
+	public Collection<Person> findAllPersonsFromGroup(long id, String pattern) {
+		Set<Person> persons = new LinkedHashSet<Person>(dao.findAllPersonsFromGroup(id, pattern));
+		if(userIsAnonymous()) {
+			hideSensibleData(persons);
 		}
 		return persons;
 	}

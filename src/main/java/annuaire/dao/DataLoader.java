@@ -23,26 +23,43 @@ public class DataLoader {
 	private IPersonDAO dao;
 	
 	private List<String> names = Arrays.asList(
-							"Fareignant",
 							"Beth",
 							"Fenope",
 							"Aradol",
 							"Saquet",
-							"Smith"
+							"Smith",
+							"Jones",
+							"Johnson",
+							"Brown",
+							"Taylor",
+							"Davies",
+							"Wilson",
+							"Evans",
+							"Thomas",
+							"Roberts"
 						);
 	
 	private List<String> firstNames = Arrays.asList(
-							"John",
-							"Jane",
 							"Jack",
-							"Daniels",
-							"Williams"
+							"Harry",
+							"Jack",
+							"Jacob",
+							"Charlie",
+							"Thomas",
+							"George",
+							"Oscar",
+							"James",
+							"William",
+							"Jake",
+							"Connor",
+							"Callum",
+							"Jacob"
 						);
 	
-	public static final int nbPersons = 100 ;
+	public static final int nbPersons = 1200 ;
 	
 	private List<Group> groups = new LinkedList<Group>();
-	private final int nbGroup = 10 ;
+	private final int nbGroup = 100 ;
 	private final int seed = 22 ;
 	private Random r = new Random(seed);
 	

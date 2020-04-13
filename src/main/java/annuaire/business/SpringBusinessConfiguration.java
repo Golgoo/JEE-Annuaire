@@ -11,7 +11,6 @@ import annuaire.web.User;
 public class SpringBusinessConfiguration {
 	@Bean
 	public User createUser() {
-		System.out.println("Session user created");
 		return new User();
 	}
 }

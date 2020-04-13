@@ -37,7 +37,7 @@ public class BirthdayEditor extends PropertyEditorSupport{
         	logger.info("Our exception");
         	e.printStackTrace();
         	logger.info("End of our exception");
-            throw new IllegalArgumentException("Group inexistant");
+            throw new IllegalArgumentException("Date Invalide");
         }
     }
 }

@@ -43,6 +43,10 @@ public interface IPersonDAO {
 
 	Collection<Person> findAllPersons(String pattern);
 
+	Collection<Person> findAllPersonWithHideData();
+
+	Collection<Person> findAllPersonsFromGroup(long groupId, String pattern);
+
 
 	
 

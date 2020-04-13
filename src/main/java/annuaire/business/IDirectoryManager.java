@@ -38,4 +38,6 @@ public interface IDirectoryManager {
 
 	public Collection<Person> findAllPersons(String pattern);
 
+	public Collection<Person> findAllPersonsFromGroup(long id, String pattern);
+
 }

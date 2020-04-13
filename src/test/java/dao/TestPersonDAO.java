@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -241,5 +243,35 @@ public class TestPersonDAO {
 	public void findPersonWithEmailUnexisting() {
 		Person f = dao.findPerson("randomemail");
 		assertNull(f);
+	}
+	
+	
+	//@Test
+	public void testFindAllPersonWithHideData() {
+		Group ga = createGroupA();
+		Group gb = createGroupB();
+		
+		dao.saveGroup(ga);
+		dao.saveGroup(gb);
+		
+		Person john = createJohn();
+		Person jane = createJane();
+		john.setGroup(ga);
+		jane.setGroup(ga);
+		
+		dao.savePerson(john);
+		dao.savePerson(jane);
+		
+		Collection<Person> persons = dao.findAllPersonWithHideData();
+		for(Person p : persons) {
+			assertNotNull(p.getId());
+			assertNotNull(p.getFirstName());
+			assertNotNull(p.getGroup());
+			assertNotNull(p.getLastName());
+			assertNotNull(p.getWebsite());
+			assertNotNull(p.getPassword());
+			assertNull(p.getEmail());
+			assertNull(p.getBirthDay());
+		}
 	}
 }

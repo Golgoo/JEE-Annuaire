@@ -8,39 +8,21 @@
 <head>
 	<%@include file="/WEB-INF/jsp/includes/head-bootstrap.jsp" %>
 	<link href="<c:url value="/annuaire.css" />" rel="stylesheet">
-	<title><spring:message code="others.PageDuGroupe"></spring:message></title>
+	<title><spring:message code="group.PageDuGroupe"></spring:message></title>
 </head>
 <body>
 <%@ include file="/WEB-INF/jsp/includes/body-menu.jsp" %>
 
 <div class="main">
-	<h2> ${group.nom }</h2>
-	
+	<h2> ${group.nom } </h2>
+	<h4> <spring:message code="group.NbrMembers"></spring:message> : ${group.members.size() }</h4>
+		
 	<c:set var="person_base_url">
 		<url-builder:person_page />
 	</c:set>
 	<br />
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col"><spring:message code="others.id"/></th>
-				<th scope="col"><spring:message code="others.NomDeFamille"/></th>
-				<th scope="col"><spring:message code="others.Prenom"/></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${group.members }" var="person">
-				<c:url var="person_url" value="${person_base_url }">
-					<c:param name="id">${person.id }</c:param>
-				</c:url>
-				<tr>
-					<th scope="row"><a href="${person_url }">${person.id }</a></th>
-					<td><a href="${person_url }">${person.lastName }</a></td>
-					<td><a href="${person_url }">${person.firstName }</a></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	
+	<sb:person_table persons="${group.members }"></sb:person_table>
 </div>
 </body>
 </html>
