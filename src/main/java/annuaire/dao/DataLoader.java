@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import annuaire.model.Group;
 import annuaire.model.Person;
+import annuaire.model.SecretQuestion;
 
 @Component
 public class DataLoader {
@@ -56,10 +57,10 @@ public class DataLoader {
 							"Jacob"
 						);
 	
-	public static final int nbPersons = 1200 ;
+	public static final int nbPersons = 1 ;
 	
 	private List<Group> groups = new LinkedList<Group>();
-	private final int nbGroup = 100 ;
+	private final int nbGroup = 1 ;
 	private final int seed = 22 ;
 	private Random r = new Random(seed);
 	
@@ -69,6 +70,8 @@ public class DataLoader {
 	private String selectRandomFirstName() {
 		return firstNames.get(r.nextInt(firstNames.size()));
 	}
+
+	private SecretQuestion secretQuestion = new SecretQuestion("Quel est la réponse ?", "raiponce");
 	
 	@PostConstruct
 	public void loadData() {
@@ -100,6 +103,7 @@ public class DataLoader {
 			p.setLastName(nameBuffer.toString());
 			p.setPassword("pass" + i);
 			p.setGroup(groups.get(r.nextInt(groups.size())));
+			p.setSecretQuestion(secretQuestion);
 			dao.savePerson(p);
 		}
 	}

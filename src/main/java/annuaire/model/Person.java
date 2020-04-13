@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -62,6 +63,10 @@ public class Person implements Serializable {
 	@Basic(optional = false)
 	@Column(nullable = false)
 	private String password;
+	
+	
+	@Embedded
+	private SecretQuestion secretQuestion ;
 
 	@Version()
 	private long version = 0;
@@ -163,9 +168,12 @@ public class Person implements Serializable {
 		this.password = password;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public SecretQuestion getSecretQuestion() {
+		return secretQuestion;
 	}
 
-
+	public void setSecretQuestion(SecretQuestion secretQuestion) {
+		this.secretQuestion = secretQuestion;
+	}
+	
 }

@@ -26,10 +26,9 @@
 		<input name="pattern" type="text" class="form-control" placeholder="${find_inter }" />
 		
 		<span class="input-group-btn">
-				<button type="submit" class="btn btn-default">
-					<span class="glyphicon glyphicon glyphicon-search"
-						aria-hidden="true"></span>
-				</button>
+			<button type="submit" class="btn btn-default search-icon">
+				<i class="fa fa-search "></i>
+			</button>
 		</span>
 	</div>
 </form>

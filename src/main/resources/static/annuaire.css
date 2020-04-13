@@ -8,18 +8,24 @@ nav{
 	font-size: 20px;
 }
 
+.search-icon:hover{
+	color: white;
+	background: gray;
+}
+
 .navbar-brand{
 	font-size: 25px;
 }
 
 .annuaire-nav-droite{
-	margin-right: 20em;
-	background-color: #6495ED;
+	margin-right: 5em;
 	font-weight: bold;
 }
 
-.annuaire-nav-droite a{
+.annuaire-login{
+	background-color: #2f9adf;
 	color: white;
+	 
 }
 
 .main{
@@ -30,4 +36,42 @@ nav{
 
 .annuaire-search{
 	margin-right: 5em;
+}
+
+.person-cont {
+	border: solid 4px #dbe1e7;
+	border-radius: 5px;
+}
+
+.person-cont {
+	border-top: solid 15px #2196F3;
+}
+.person-cont{
+	width: 50%;
+	margin-left: 5%;
+}
+
+.person-cont .cont{
+	height: 60px;
+}
+
+.person-cont .row .name{
+	background-color: #ddffff;
+}
+
+.person-cont .space{
+	height: 9px;
+	background-color: #AAA;
+	border: 4px solid #DDD;
+}
+
+.person-cont .content{
+	overflow-wrap: break-word;
+}
+
+.person-cont .content-hide{
+	color: red;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
 }

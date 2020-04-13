@@ -56,4 +56,18 @@
 		<body-content>empty</body-content>
 		<description>build login URL</description>
 	</tag>
+	
+	<tag>
+		<name>lostpw</name>
+		<tag-class>annuaire.tag.LostPasswordRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>build password recovery URL</description>
+	</tag>
+	
+	<tag>
+		<name>lostpw-cancel</name>
+		<tag-class>annuaire.tag.LostPasswordCancelRefTag</tag-class>
+		<body-content>empty</body-content>
+		<description>abort the password recovery</description>
+	</tag>
 </taglib>

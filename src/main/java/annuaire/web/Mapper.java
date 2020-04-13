@@ -12,4 +12,8 @@ public class Mapper {
 	public final static String groupControllerRoute = "/annuaire/group";
 	public final static String groupListRoute = "/list";
 	public final static String groupShowRoute = "/show";
+	
+	public final static String lostPasswordControllerRoute = "/lostpw";
+	public static final String lostPasswordRoute = "";
+	public static final String lostPasswordCancelRoute = "/cancel";
 }

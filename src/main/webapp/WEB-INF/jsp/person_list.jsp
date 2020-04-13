@@ -16,7 +16,7 @@
 	<%@ include file="/WEB-INF/jsp/includes/body-menu.jsp"%>
 <div class="main">
 
-	<h2> <spring:message code="others.PersonList1"/>Liste des personnes de l'annuaires </h2>
+	<h2> <spring:message code="others.PersonList1"/></h2>
 	
 	<sb:person_table persons="${persons }"></sb:person_table>
 	
