@@ -57,6 +57,10 @@ public class LostPasswordService implements ILostPasswordService {
 
 	@Override
 	public boolean updateEmail(String userEmail) {
+		lostWizard.setUserId(null);
+		lostWizard.setAnswerQuestion(false);
+		lostWizard.setNewPassword(false);
+		
 		Person p = dao.findPerson(userEmail);
 		if(p == null) return false;
 		lostWizard.setUserId(p.getId());
@@ -65,6 +69,9 @@ public class LostPasswordService implements ILostPasswordService {
 
 	@Override
 	public boolean updateSecretAnswer(String answer) {
+		lostWizard.setNewPassword(false);
+		lostWizard.setAnswerQuestion(false);
+		
 		Person p = getCurrentPerson();
 		if(p == null) return false;
 		if(! p.getSecretQuestion().getAnswer().equals(answer)) return false;

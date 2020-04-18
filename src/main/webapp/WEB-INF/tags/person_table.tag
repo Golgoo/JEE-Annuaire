@@ -37,16 +37,16 @@
 	<thead>
 		<tr>
 			<th scope="col"><spring:message code="others.id" /> 
-				<a href="${id_asc_param }"><span class="glyphicon glyphicon-chevron-down"></span></a>
-				<a href="${id_desc_param }"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a href="${id_asc_param }"><i class="fa fa-chevron-down"></i></a>
+				<a href="${id_desc_param }"><i class="fa fa-chevron-up"></i></a>
 			</th>
 			<th scope="col"><spring:message code="person.NomDeFamille" /> 
-				<a href="${lastName_asc_param }"><span class="glyphicon glyphicon-chevron-down"></span></a> 
-				<a href="${lastName_desc_param }"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a href="${lastName_asc_param }"><i class="fa fa-chevron-down"></i></a> 
+				<a href="${lastName_desc_param }"><i class="fa fa-chevron-up"></i></a>
 			</th>
 			<th scope="col"><spring:message code="person.Prenom" />
-				<a href="${firstName_asc_param }"><span class="glyphicon glyphicon-chevron-down"></span></a>
-				<a href="${firstName_desc_param }"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a href="${firstName_asc_param }"><i class="fa fa-chevron-down"></i></a>
+				<a href="${firstName_desc_param }"><i class="fa fa-chevron-up"></i></a>
 			</th>
 		</tr>
 	</thead>

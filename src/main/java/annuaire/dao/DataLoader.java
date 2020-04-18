@@ -57,10 +57,10 @@ public class DataLoader {
 							"Jacob"
 						);
 	
-	public static final int nbPersons = 1 ;
+	public static final int nbPersons = 1500 ;
 	
 	private List<Group> groups = new LinkedList<Group>();
-	private final int nbGroup = 1 ;
+	private final int nbGroup = 100 ;
 	private final int seed = 22 ;
 	private Random r = new Random(seed);
 	
@@ -89,7 +89,7 @@ public class DataLoader {
 	}
 
 	private void createPersons() {
-		for(int i = 0 ; i < nbPersons ; i ++) {
+		for(int i = 1 ; i <= nbPersons ; i ++) {
 			StringBuffer nameBuffer = new StringBuffer();
 			nameBuffer.append(selectRandomName());
 			nameBuffer.append("-" + selectRandomName());
@@ -98,10 +98,10 @@ public class DataLoader {
 			firstNameBuffer.append("-" + selectRandomFirstName());
 			Person p = new Person();
 			p.setBirthDay(new Date(r.nextInt(20000)));
-			p.setEmail("mail@"+i);
+			p.setEmail("mail@" + nbGroup + i);
 			p.setFirstName(firstNameBuffer.toString());
 			p.setLastName(nameBuffer.toString());
-			p.setPassword("pass" + i);
+			p.setPassword("pass" + nbGroup + i);
 			p.setGroup(groups.get(r.nextInt(groups.size())));
 			p.setSecretQuestion(secretQuestion);
 			dao.savePerson(p);
