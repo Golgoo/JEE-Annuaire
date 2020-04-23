@@ -48,13 +48,27 @@
 							<i class="fa fa-envelope-square fa-2x"></i>
 						</div>
 						<div class="col-4">
-							<i class="fa fa-times-circle fa-2x content-hide"></i>
+							<c:choose>
+								<c:when test="${not empty person.email}">
+									${person.email }
+								</c:when>
+								<c:otherwise>
+									<i class="fa fa-times-circle fa-2x content-hide"></i>
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="col-1 offset-1">
 							<i class="fa fa-birthday-cake fa-2x "></i>
 						</div>
 						<div class="col-5">
-							<i class="fa fa-times-circle fa-2x content-hide"></i>
+							<c:choose>
+								<c:when test="${not empty person.birthDay }">
+									${person.birthDay }
+								</c:when>
+								<c:otherwise>
+									<i class="fa fa-times-circle fa-2x content-hide"></i>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>

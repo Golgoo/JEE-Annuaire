@@ -98,10 +98,10 @@ public class DataLoader {
 			firstNameBuffer.append("-" + selectRandomFirstName());
 			Person p = new Person();
 			p.setBirthDay(new Date(r.nextInt(20000)));
-			p.setEmail("mail@" + nbGroup + i);
+			p.setEmail("mail@" + ( nbGroup + i));
 			p.setFirstName(firstNameBuffer.toString());
 			p.setLastName(nameBuffer.toString());
-			p.setPassword("pass" + nbGroup + i);
+			p.setPassword("pass" + (nbGroup + i));
 			p.setGroup(groups.get(r.nextInt(groups.size())));
 			p.setSecretQuestion(secretQuestion);
 			dao.savePerson(p);

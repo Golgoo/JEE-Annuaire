@@ -89,11 +89,14 @@ public class DirectoryManager implements IDirectoryManager{
 	public boolean login(long personId, String password) {
 		Person p = dao.findPerson(personId);
 		if(p == null) {
+			System.err.println("No such person with that ID");
 			return false;
 		}
 		if(p.getPassword().equals(password)) {
 			user.setPersonId(personId);
 			return true;
+		}else {
+			System.err.println("Password is incorect");
 		}
 		return false;
 	}

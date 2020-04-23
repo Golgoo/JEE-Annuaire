@@ -25,6 +25,9 @@ public class AuthController extends BaseController {
 	public ModelAndView login(@RequestParam String email, @RequestParam String password, Model model) {
 		//Named query find user from email
 		Person p = dao.findPerson(email);
+		if(p == null) {
+			System.err.println("No such person with that email");
+		}
 		if(p == null || !directoryManager.login(p.getId(), password)) {
 			return new ModelAndView("redirect:/login", "invalid_auth", true);
 		}
